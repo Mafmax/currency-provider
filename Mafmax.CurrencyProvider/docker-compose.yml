@@ -18,3 +18,10 @@ services:
       POSTGRES_USER: ${USER_SERVICE_DB_USER:-identity}
       POSTGRES_DB: identity
       POSTGRES_PASSWORD: ${USER_SERVICE_DB_PASSWORD:-identity}
+
+  mafmax.currencyprovider.backgrounworker:
+    image: ${DOCKER_REGISTRY-}mafmaxcurrencyproviderbackgrounworker
+    build:
+      context: .
+      dockerfile: Mafmax.CurrencyProvider.BackgrounWorker/Dockerfile
+

@@ -1,0 +1,6 @@
+@Mafmax.CurrencyProvider.BackgrounWorker_HostAddress = http://localhost:5208
+
+GET {{Mafmax.CurrencyProvider.BackgrounWorker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

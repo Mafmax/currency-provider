@@ -4,7 +4,8 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "mafmax.currencyprovider.dbmigrator": "StartDebugging"
+        "mafmax.currencyprovider.dbmigrator": "StartDebugging",
+        "mafmax.currencyprovider.backgrounworker": "StartDebugging"
       }
     }
   }
