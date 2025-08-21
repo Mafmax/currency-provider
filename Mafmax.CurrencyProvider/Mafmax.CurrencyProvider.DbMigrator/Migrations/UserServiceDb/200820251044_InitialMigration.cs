@@ -11,20 +11,20 @@ public class InitialMigration : UserServiceDbMigration
     {
         Execute.Sql(
 """
-CREATE TABLE IF NOT EXISTS "users" AS
+CREATE TABLE IF NOT EXISTS "users"
 (
     id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
-    name TEXT(100) NOT NULL,
-    mail TEXT(256) NOT NULL,
-    password_hash TEXT(256) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    mail VARCHAR(256) NOT NULL,
+    password_hash VARCHAR(256) NOT NULL,
     password_salt INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "favorites" AS
+CREATE TABLE IF NOT EXISTS "favorites"
 (
-    id UUID PRIMARY KEY NOT NULL DEFAULT get_random_uuid(),
-    user_id UUID NOT NULL FOREIGN KEY REFERENCES "users" (id) ON DELETE CASCADE,
-    currency_id TEXT(3) NOT NULL
+    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    currency_id VARCHAR(3) NOT NULL
 );
 """);
     }

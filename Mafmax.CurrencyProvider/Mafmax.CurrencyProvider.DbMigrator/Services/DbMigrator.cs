@@ -33,10 +33,11 @@ public class DbMigrator(ILogger<DbMigrator> logger) : IDbMigrator
         try
         {
             await Task.Run(() => MigrateInner(migrationOption.ConnectionString, migrationOption.Tags), ct);
+            logger.LogInformation("Migration completed.");
         }
         catch (MissingMigrationsException ex)
         {
-            logger.LogWarning(ex, "No migrations found. Database is up to date.");
+            logger.LogWarning(ex, "No migrations found.");
         }
         catch (Exception ex)
         {

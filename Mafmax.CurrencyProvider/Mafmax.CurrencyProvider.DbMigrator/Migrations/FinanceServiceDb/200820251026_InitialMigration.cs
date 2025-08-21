@@ -11,18 +11,18 @@ public class InitialMigration : FinanceServiceDbMigration
     {
         Execute.Sql(
 """
-CREATE TABLE IF NOT EXISTS "currencies" AS
+CREATE TABLE IF NOT EXISTS "currencies"
 (
-    id TEXT(3) PRIMARY KEY NOT NULL,
-    name TEXT(40) NOT NULL,
-    rate: NUMERIC(20, 10) NOT NULL,
-    date: TIMESTAMP NOT NULL
+    id VARCHAR(3) PRIMARY KEY NOT NULL,
+    name VARCHAR(40) NOT NULL,
+    rate NUMERIC(20, 10) NOT NULL,
+    date TIMESTAMP NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS "currencies" ON "currencies"
+CREATE INDEX IF NOT EXISTS "currencies_id_date" ON "currencies"
 USING BTREE (id, date);
 
-CREATE TABLE IF NOT EXISTS "syncs" AS
+CREATE TABLE IF NOT EXISTS "syncs"
 (
     id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
     date TIMESTAMP NOT NULL

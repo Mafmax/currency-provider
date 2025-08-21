@@ -1,0 +1,20 @@
+services:
+  mafmax.currencyprovider.dbmigrator:
+    image: ${DOCKER_REGISTRY-}mafmaxcurrencyproviderdbmigrator
+    build:
+      context: .
+      dockerfile: Mafmax.CurrencyProvider.DbMigrator/Dockerfile
+
+  finance-service-db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${FINANCE_SERVICE_DB_USER:-finance}
+      POSTGRES_DB: finance
+      POSTGRES_PASSWORD: ${FINANCE_SERVICE_DB_PASSWORD:-finance}
+
+  user-service-db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: ${USER_SERVICE_DB_USER:-identity}
+      POSTGRES_DB: identity
+      POSTGRES_PASSWORD: ${USER_SERVICE_DB_PASSWORD:-identity}
